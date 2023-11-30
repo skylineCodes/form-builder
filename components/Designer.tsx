@@ -226,7 +226,7 @@ function DesignerElementWrapper({ element }: { element: FormElementInstance }) {
       />
       <div
         ref={bottomHalf.setNodeRef}
-        className='absolute  w-full bottom-0 h-1/2 rounded-b-md'
+        className='absolute w-full bottom-0 h-1/2 rounded-b-md'
       />
       {mouseIsOver && (
         <>
