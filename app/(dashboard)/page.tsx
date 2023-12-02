@@ -41,7 +41,7 @@ export default function Home() {
 
 async function CardStatsWrapper() {
   const stats = await GetFormStats();
-  return <StatsCards loading={false} data={stats} />;
+  return <StatsCards loading={false} data={stats || []} />;
 }
 
 interface StatsCardProps {
@@ -93,7 +93,7 @@ function StatsCards(props: StatsCardProps) {
   );
 }
 
-function StatsCard({
+export function StatsCard({
   title,
   value,
   icon,
@@ -137,8 +137,8 @@ async function FormCards() {
   const forms = await GetForms();
   return (
     <>
-      {forms.map((form) => (
-        <FormCard key={form.id} form={form} />
+      {forms?.map((form) => (
+        <FormCard key={form?.id} form={form} />
       ))}
     </>
   );

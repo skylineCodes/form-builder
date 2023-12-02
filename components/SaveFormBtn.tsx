@@ -7,24 +7,24 @@ import { toast } from './ui/use-toast';
 import { FaSpinner } from 'react-icons/fa';
 
 function SaveFormBtn({ id }: { id: number }) {
-//   const { elements } = useDesigner();
+  const { elements } = useDesigner();
   const [loading, startTransition] = useTransition();
 
   const updateFormContent = async () => {
-    // try {
-    //   const jsonElements = JSON.stringify(elements);
-    //   await UpdateFormContent(id, jsonElements);
-    //   toast({
-    //     title: 'Success',
-    //     description: 'Your form has been saved',
-    //   });
-    // } catch (error) {
-    //   toast({
-    //     title: 'Error',
-    //     description: 'Something went wrong',
-    //     variant: 'destructive',
-    //   });
-    // }
+    try {
+      const jsonElements = JSON.stringify(elements);
+      await UpdateFormContent(id, jsonElements);
+      toast({
+        title: 'Success',
+        description: 'Your form has been saved',
+      });
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong',
+        variant: 'destructive',
+      });
+    }
   };
   return (
     <Button

@@ -18,13 +18,13 @@ model Form {
   published       Boolean           @default(false)
   name            String
   description     String            @default("")
-  content         String            @default("[]")
+  content        String            @default("[]")
   visits          Int               @default(0)
   submissions     Int               @default(0)
-  shareUrl        String            @default(uuid())
+  shareURL        String            @unique @default(uuid())
   FormSubmissions FormSubmissions[]
 
-  @@unique([name, userId])
+  @@unique([name, userId, shareURL])
 }
 
 model FormSubmissions {

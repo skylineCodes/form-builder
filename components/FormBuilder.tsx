@@ -21,10 +21,10 @@ import { Button } from './ui/button';
 import { toast } from './ui/use-toast';
 import Link from 'next/link';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
-// import Confetti from 'react-confetti';
+import Confetti from 'react-confetti';
 
 function FormBuilder({ form }: { form: Form }) {
-  // const { setElements, setSelectedElement } = useDesigner();
+  const { setElements, setSelectedElement } = useDesigner();
   const [isReady, setIsReady] = useState(false);
 
   const mouseSensor = useSensor(MouseSensor, {
@@ -42,36 +42,36 @@ function FormBuilder({ form }: { form: Form }) {
 
   const sensors = useSensors(mouseSensor, touchSensor);
 
-  // useEffect(() => {
-  //   if (isReady) return;
-  //   const elements = JSON.parse(form.content);
-  //   setElements(elements);
-  //   setSelectedElement(null);
-  //   const readyTimeout = setTimeout(() => setIsReady(true), 500);
-  //   return () => clearTimeout(readyTimeout);
-  // }, [form, setElements, isReady, setSelectedElement]);
+  useEffect(() => {
+    if (isReady) return;
+    const elements = JSON.parse(form.content);
+    setElements(elements);
+    setSelectedElement(null);
+    const readyTimeout = setTimeout(() => setIsReady(true), 500);
+    return () => clearTimeout(readyTimeout);
+  }, [form, setElements, isReady, setSelectedElement]);
 
-  // if (!isReady) {
-  //   return (
-  //     <div className='flex flex-col items-center justify-center w-full h-full'>
-  //       <ImSpinner2 className='animate-spin h-12 w-12' />
-  //     </div>
-  //   );
-  // }
+  if (!isReady) {
+    return (
+      <div className='flex flex-col items-center justify-center w-full h-full'>
+        <ImSpinner2 className='animate-spin h-12 w-12' />
+      </div>
+    );
+  }
 
-  // const shareUrl = `${window.location.origin}/submit/${form.shareURL}`;
+  const shareURL = `${window.location.origin}/submit/${form?.shareURL}`;
 
   if (form.published) {
     return (
       <>
-        {/* <Confetti
+        <Confetti
           width={window.innerWidth}
           height={window.innerHeight}
           recycle={false}
-          numberOfPieces={1000}
-        /> */}
+          numberOfPieces={2000}
+        />
         <div className='flex flex-col items-center justify-center h-full w-full'>
-          <div className='max-w-md'>
+          <div className='max-w-lg'>
             <h1 className='text-center text-4xl font-bold text-primary border-b pb-2 mb-10'>
               🎊🎊 Form Published 🎊🎊
             </h1>
@@ -79,12 +79,12 @@ function FormBuilder({ form }: { form: Form }) {
             <h3 className='text-xl text-muted-foreground border-b pb-10'>
               Anyone with the link can view and submit the form
             </h3>
-            {/* <div className='my-4 flex flex-col gap-2 items-center w-full border-b pb-4'>
-              <Input className='w-full' readOnly value={shareUrl} />
+            <div className='my-4 flex flex-col gap-2 items-center w-full border-b pb-4'>
+              <Input className='w-full' readOnly value={shareURL} />
               <Button
                 className='mt-2 w-full'
                 onClick={() => {
-                  navigator.clipboard.writeText(shareUrl);
+                  navigator.clipboard.writeText(shareURL);
                   toast({
                     title: 'Copied!',
                     description: 'Link copied to clipboard',
@@ -93,7 +93,7 @@ function FormBuilder({ form }: { form: Form }) {
               >
                 Copy link
               </Button>
-            </div> */}
+            </div>
             <div className='flex justify-between'>
               <Button variant={'link'} asChild>
                 <Link href={'/'} className='gap-2'>
@@ -132,7 +132,7 @@ function FormBuilder({ form }: { form: Form }) {
             )}
           </div>
         </nav>
-        <div className='flex w-full flex-grow items-center justify-center relative overflow-y-auto h-[200px] bg-accent bg-[url(/paper.svg)] dark:bg-[url(/paper-dark.svg)]'>
+        <div className='flex w-full flex-grow items-center justify-center relative overflow-y-auto h-[200px] bg-accent bg-[url(/graph-paper.svg)] dark:bg-[url(/graph-paper-dark.svg)]'>
           <Designer />
         </div>
       </main>
