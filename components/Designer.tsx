@@ -155,9 +155,13 @@ function Designer() {
           )}
 
           {elements.length > 0 && (
+            // <div className='grid grid-cols-4 w-full gap-2 p-4'>
             <div className='flex flex-col w-full gap-2 p-4'>
               {elements.map((element) => (
-                <DesignerElementWrapper key={element.id} element={element} />
+                <>
+                  {console.log(elements)}
+                  <DesignerElementWrapper key={element.id} element={element} />
+                </>
               ))}
             </div>
           )}
