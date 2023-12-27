@@ -22,9 +22,11 @@ import { toast } from './ui/use-toast';
 import Link from 'next/link';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import Confetti from 'react-confetti';
+import { FaDesktop } from 'react-icons/fa';
+import { FiSmartphone } from 'react-icons/fi';
 
 function FormBuilder({ form }: { form: Form }) {
-  const { setElements, setSelectedElement } = useDesigner();
+  const { setElements, setSelectedElement, width, setWidth } = useDesigner();
   const [isReady, setIsReady] = useState(false);
 
   const mouseSensor = useSensor(MouseSensor, {
@@ -117,12 +119,22 @@ function FormBuilder({ form }: { form: Form }) {
   return (
     <DndContext sensors={sensors}>
       <main className='flex flex-col w-full'>
-        <nav className='flex justify-between border-b-2 p-4 gap-3 items-center'>
+        <nav className='grid grid-cols-3 border-b-2 p-4 gap-3 items-center'>
           <h2 className='truncate font-medium'>
             <span className='text-muted-foreground mr-2'>Form:</span>
             {form.name}
           </h2>
-          <div className='flex items-center gap-2'>
+          <div className='flex gap-8 items-center justify-center'>
+            <FaDesktop
+              className='h-6 w-6 cursor-pointer'
+              onClick={() => setWidth('max-w-6xl')}
+            />
+            <FiSmartphone
+              className='h-6 w-6 cursor-pointer'
+              onClick={() => setWidth('max-w-sm')}
+            />
+          </div>
+          <div className='flex items-center justify-end gap-2'>
             <PreviewDialogBtn />
             {!form.published && (
               <>
@@ -132,7 +144,7 @@ function FormBuilder({ form }: { form: Form }) {
             )}
           </div>
         </nav>
-        <div className='flex w-full flex-grow items-center justify-center relative overflow-y-auto h-[200px] bg-accent bg-[url(/graph-paper.svg)] dark:bg-[url(/graph-paper-dark.svg)]'>
+        <div className='flex w-full flex-grow items-center justify-center relative overflow-y-auto h-[200px] bg-accent bg-black dark:bg-white'>
           <Designer />
         </div>
       </main>

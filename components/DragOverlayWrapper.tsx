@@ -10,6 +10,7 @@ function DragOverlayWrapper() {
 
   useDndMonitor({
     onDragStart: (event) => {
+      // console.log(event);
       setDraggedItem(event.active);
     },
     onDragCancel: () => {
@@ -19,6 +20,8 @@ function DragOverlayWrapper() {
       setDraggedItem(null);
     },
   });
+
+  // console.log(draggedItem);
 
   if (!draggedItem) return null;
 

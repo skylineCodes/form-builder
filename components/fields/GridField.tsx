@@ -9,7 +9,7 @@ import { Label } from '../ui/label';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
+import { JSX, useEffect } from 'react';
 import useDesigner from '../hooks/useDesigner';
 
 import {
@@ -26,11 +26,11 @@ import { Slider } from '../ui/slider';
 const type: ElementsType = 'GridField';
 
 const extraAttributes = {
-  height: 20, // px
+  column: 1, // fr
 };
 
 const propertiesSchema = z.object({
-  height: z.number().min(5).max(200),
+  column: z.number().min(1).max(5),
 });
 
 export const GridFieldFormElement: FormElement = {
@@ -61,12 +61,110 @@ function DesignerComponent({
   elementInstance: FormElementInstance;
 }) {
   const element = elementInstance as CustomInstance;
-  const { height } = element.extraAttributes;
+  const { column } = element.extraAttributes;
+
+  // function displayColumnByCount(column: number) {
+  //   setTimeout(() => {
+  //     let gridFieldDiv: any = document.getElementById('gridfield');
+  //     console.log(gridFieldDiv);
+  //     const currentDiv = (gridFieldDiv.innerHTML +=
+  //       "<div className='flex flex-col h-full border border-sky-500 border-dashed items-center'>hello</div>");
+  //   }, 500);
+  // }
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     const gridfield = document.getElementById('gridfield');
+  //     const cells: any = gridfield?.getElementsByTagName('div');
+
+  //     for (const cell of cells) {
+  //       cell.remove();
+  //     }
+  //   }, 200);
+
+  //   for (let i = 0; i < Number(column); i++) {
+  //     // Delay each iteration by 1 second
+  //     setTimeout(
+  //       function () {          
+  //         let gridFieldDiv: any = document.getElementById('gridfield');
+  //         console.log(gridFieldDiv);
+  //         const currentDiv = (gridFieldDiv.innerHTML +=
+  //           "<div className='gridItem flex flex-col h-full border border-sky-500 border-dashed items-center'>hello</div>");
+  //       },
+  //       500 * i,
+  //       i
+  //     );
+  //   }
+  // }, [column])
+
   return (
-    <div className='flex flex-col gap-2 w-full items-center'>
-      <Label className='text-muted-foreground'>Grid field: {height}px</Label>
-      {/* <LuSeparatorHorizontal className='h-8 w-8' /> */}
-    </div>
+    // <div className='flex h-[400px] flex-col gap-2 w-full items-center'>
+    <>
+      {column === 1 && (
+        <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+          hello
+        </div>
+      )}
+      {column === 2 && (
+        <>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+        </>
+      )}
+      {column === 3 && (
+        <>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+        </>
+      )}
+      {column === 4 && (
+        <>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+        </>
+      )}
+      {column === 5 && (
+        <>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+          <div className='flex flex-col items-center h-full border border-sky-500 border-dashed'>
+            hello
+          </div>
+        </>
+      )}
+    </>
+    // </div>
   );
 }
 
@@ -94,7 +192,7 @@ function PropertiesComponent({
     resolver: zodResolver(propertiesSchema),
     mode: 'onBlur',
     defaultValues: {
-      height: element.extraAttributes.height,
+      column: element.extraAttributes.column,
     },
   });
 
@@ -103,11 +201,11 @@ function PropertiesComponent({
   }, [element, form]);
 
   function applyChanges(values: propertiesFormSchemaType) {
-    const { height } = values;
+    const { column } = values;
     updateElement(element.id, {
       ...element,
       extraAttributes: {
-        height,
+        column,
       },
     });
   }
@@ -123,15 +221,15 @@ function PropertiesComponent({
       >
         <FormField
           control={form.control}
-          name='height'
+          name='column'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Height (px): {form.watch('height')}</FormLabel>
+              <FormLabel>Column (px): {form.watch('column')}</FormLabel>
               <FormControl className='pt-2'>
                 <Slider
                   defaultValue={[field.value]}
-                  min={5}
-                  max={200}
+                  min={1}
+                  max={5}
                   step={1}
                   onValueChange={(value) => {
                     field.onChange(value[0]);

@@ -26,6 +26,7 @@ function Designer() {
     selectedElement,
     setSelectedElement,
     removeElement,
+    width
   } = useDesigner();
 
   const droppable = useDroppable({
@@ -37,6 +38,7 @@ function Designer() {
 
   useDndMonitor({
     onDragEnd: (event: DragEndEvent) => {
+      console.log(event);
       const { active, over } = event;
       if (!active || !over) return;
 
@@ -138,8 +140,9 @@ function Designer() {
         <div
           ref={droppable.setNodeRef}
           className={cn(
-            'bg-background max-w-[70vw] h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1 overflow-y-auto',
-            droppable.isOver && 'ring-4 ring-primary ring-inset'
+            'bg-background h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1 overflow-y-auto',
+            droppable.isOver && 'ring-4 ring-primary ring-inset',
+            width
           )}
         >
           {!droppable.isOver && elements.length === 0 && (
@@ -159,7 +162,7 @@ function Designer() {
             <div className='flex flex-col w-full gap-2 p-4'>
               {elements.map((element) => (
                 <>
-                  {console.log(elements)}
+                  {/* {console.log(elements)} */}
                   <DesignerElementWrapper key={element.id} element={element} />
                 </>
               ))}
@@ -209,10 +212,13 @@ function DesignerElementWrapper({ element }: { element: FormElementInstance }) {
   
   return (
     <div
-      ref={draggable.setNodeRef}
+      // ref={draggable.setNodeRef}
       {...draggable.listeners}
       {...draggable.attributes}
-      className='relative h-[120px] flex flex-col text-foreground hover:cursor-pointer rounded-md ring-1 ring-accent ring-inset'
+      id="element-container"
+      className={`relative ${
+        element?.type === 'GridField' ? 'h-[400px]' : ' h-[120px]'
+      } flex flex-col text-foreground hover:cursor-pointer rounded-md ring-1 ring-accent ring-inset`}
       onMouseEnter={() => {
         setMouseIsOver(true);
       }}
@@ -256,14 +262,26 @@ function DesignerElementWrapper({ element }: { element: FormElementInstance }) {
       {topHalf.isOver && (
         <div className='absolute top-0 w-full rounded-md h-[7px] bg-primary rounded-b-none' />
       )}
-      <div
-        className={cn(
-          'flex w-full h-[120px] items-center rounded-md bg-accent/40 px-4 py-2 pointer-events-none opacity-100',
-          mouseIsOver && 'opacity-30'
-        )}
-      >
-        <DesignerElement elementInstance={element} />
-      </div>
+      {element?.type === 'GridField' ? (
+        <div
+          id='gridfield'
+          className={cn(
+            `container m-auto grid grid-cols-${element?.extraAttributes?.column} gap-4 h-[400px] items-center rounded-md bg-accent/40 px-4 py-2 pointer-events-none opacity-100`,
+            mouseIsOver && 'opacity-30'
+          )}
+        >
+          <DesignerElement elementInstance={element} />
+        </div>
+      ) : (
+        <div
+          className={cn(
+            'flex w-full h-[120px] items-center rounded-md bg-accent/40 px-4 py-2 pointer-events-none opacity-100',
+            mouseIsOver && 'opacity-30'
+          )}
+        >
+          <DesignerElement elementInstance={element} />
+        </div>
+      )}
       {bottomHalf.isOver && (
         <div className='absolute bottom-0 w-full rounded-md h-[7px] bg-primary rounded-t-none' />
       )}

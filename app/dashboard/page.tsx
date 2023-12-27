@@ -52,6 +52,8 @@ interface StatsCardProps {
 function StatsCards(props: StatsCardProps) {
   const { data, loading } = props;
 
+  console.log(data);
+
   return (
     <div className='w-full pt-8 gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
       <StatsCard

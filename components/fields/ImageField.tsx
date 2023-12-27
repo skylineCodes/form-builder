@@ -137,13 +137,12 @@ function PropertiesComponent({ elementInstance }: {
     },
   });
 
-  // console.log(form);
-
   useEffect(() => {
     form.reset(element.extraAttributes);
-  }, [element, form, height, width]);
+  }, [element, form]);
 
   function applyChanges(values: propertiesFormSchemaType) {
+    console.log(values)
     updateElement(element.id, {
       ...element,
       extraAttributes: {
@@ -209,26 +208,7 @@ function PropertiesComponent({ elementInstance }: {
               <FormControl>
                 <Input
                   {...field}
-                  type='number'
-                  // onChange={(e) => {
-                  //   const valid = ImageFieldFormElement.validate(
-                  //     element,
-                  //     e.target.value
-                  //   );
-                  //   setError(!valid);
-                  //   if (!valid) return;
-                  //   setHeight(Number(e.target.value))
-                  // }}
-                  // onBlur={(e) => {
-                  //   const valid = ImageFieldFormElement.validate(
-                  //     element,
-                  //     e.target.value
-                  //   );
-                  //   setError(!valid);
-                  //   if (!valid) return;
-                  //   setHeight(Number(e.target.value));
-                  // }}
-                  // value={height}
+                  // type='number'
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') e.currentTarget.blur();
                   }}
@@ -247,7 +227,7 @@ function PropertiesComponent({ elementInstance }: {
               <FormControl>
                 <Input
                   {...field}
-                  type='number'
+                  // type='number'
                   // onChange={(e) => {
                   //   const valid = ImageFieldFormElement.validate(
                   //     element,

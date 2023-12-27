@@ -19,6 +19,9 @@ type DesignerContextType = {
   setSelectedElement: Dispatch<SetStateAction<FormElementInstance | null>>;
 
   updateElement: (id: string, element: FormElementInstance) => void;
+
+  width: string;
+  setWidth: Dispatch<SetStateAction<string>>;
 };
 
 export const DesignerContext = createContext<DesignerContextType | null>(null);
@@ -29,12 +32,25 @@ export default function DesignerContextProvider({
   children: ReactNode;
 }) {
   const [elements, setElements] = useState<FormElementInstance[]>([]);
+  const [width, setWidth] = useState<string>('max-w-6xl');
+
+  // console.log(elements);
   const [selectedElement, setSelectedElement] =
     useState<FormElementInstance | null>(null);
 
   const addElement = (index: number, element: FormElementInstance) => {
     setElements((prev) => {
+      // if (element.id.toString() === parentId) {
+      //   return {
+      //     ...element,
+      //     children: [
+      //       ...element.children,
+      //       { id: Date.now(), text, children: [] },
+      //     ],
+      //   };
+      // }
       const newElements = [...prev];
+      // console.log(newElements)
       newElements.splice(index, 0, element);
       return newElements;
     });
@@ -45,7 +61,6 @@ export default function DesignerContextProvider({
   };
 
   const updateElement = (id: string, element: FormElementInstance) => {
-    console.log(element);
     setElements((prev) => {
       const newElements = [...prev];
       const index = newElements.findIndex((el) => el.id === id);
@@ -66,6 +81,9 @@ export default function DesignerContextProvider({
         setSelectedElement,
 
         updateElement,
+
+        width,
+        setWidth,
       }}
     >
       {children}
