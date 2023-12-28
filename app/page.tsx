@@ -173,7 +173,7 @@ const Home = () => {
                 with real-time data analytics with advanced analytics metrics.
               </p>
             </div>
-            <div className='w-[250vw] rounded-xl bg-gray-900/5 lg:rounded-2xl'>
+            <div className='w-[200vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
               <Image
                 src='/analytics.png'
                 alt='Analytics preview'
@@ -185,6 +185,57 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        {/* Form Details */}
+        <div className='mx-auto mb-32 mt-12 max-w-7xl min-h-[80vh]'>
+          <div className='flex gap-8 sm:mt-24'>
+            <div className='w-[200vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+              <Image
+                src='/dashboard-form.png'
+                alt='Analytics preview'
+                width={1500}
+                height={900}
+                quality={100}
+                className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
+              />
+            </div>
+            <div className='flex flex-col gap-12'>
+              <h1 className='font-bold text-2xl'>Customized Sharable Link</h1>
+              <p className='leading-normal tracking-wide text-lg'>
+                Beautiful and customizable sharable link to your customers, with
+                full details on click-rates, bounce-rates, visits-rates on each
+                survey.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Submit Form */}
+        <div className='mx-auto mb-32 mt-12 max-w-7xl min-h-[80vh]'>
+          <div className='flex gap-8 sm:mt-24'>
+            <div className='flex flex-col gap-12'>
+              <h1 className='font-bold text-2xl'>
+                Branded photos and banners
+              </h1>
+              <p className='leading-normal tracking-wide text-lg'>
+                Personalize your survey forms with your brand banners and
+                photos.
+              </p>
+            </div>
+            <div className='w-[150vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+              <Image
+                src='/form-submit.png'
+                alt='Analytics preview'
+                width={1500}
+                height={900}
+                quality={100}
+                className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Pricing */}
       </>
     </div>
   );

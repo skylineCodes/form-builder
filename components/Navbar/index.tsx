@@ -4,6 +4,7 @@ import MaxWidthWrapper from '../MaxWidthWrapper';
 import LOGO from '@/components/assets/svgs/formpilot_small.svg';
 import { Button, buttonVariants } from '../ui/button';
 import { MdArrowForward } from 'react-icons/md';
+import ThemeSwitcher from '../ThemeSwitcher';
 
 const Navbar = () => {
   return (
@@ -41,6 +42,7 @@ const Navbar = () => {
                 Get started <MdArrowForward className='ml-1.5 h-5 w-5' />
               </Button>
             </Link>
+            <ThemeSwitcher />
           </div>
         </div>
       </MaxWidthWrapper>
