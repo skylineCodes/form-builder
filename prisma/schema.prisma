@@ -34,3 +34,12 @@ model FormSubmissions {
   form      Form     @relation(fields: [formId], references: [id])
   content   String
 }
+
+// Users Table
+  // Brand color
+  // Business username
+  // 
+// Analytics Table
+  // Daily, monthly, yearly
+  // Total visits
+  // Buttons clicked

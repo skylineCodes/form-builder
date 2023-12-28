@@ -1,15 +1,108 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { MdArrowForward } from 'react-icons/md';
+import { MdArrowForward, MdCheck, MdHelpCenter } from 'react-icons/md';
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { PLANS } from '@/lib/stripe';
+import { cn } from '@/lib/utils';
+import { BiMinus } from 'react-icons/bi';
 
 const Home = () => {
+  const [user, setUser] = useState<any>();
+
+  // Number of forms per months
+  // Detailed analytics on each forms
+  // Customized url
+  // Add Brand color to forms
+  // Access to other color palettes
+  // Access to advanced elements
+
+  const pricingItems = [
+    {
+      plan: 'Free',
+      tagline: 'For solopreneurs and content creators.',
+      quota: 5,
+      features: [
+        {
+          text: '5 forms per month',
+          footnote: 'The maximum amount of forms per month',
+        },
+        {
+          text: 'Basic analytics for all surveys',
+          footnote:
+            'Access to basic analytics like submission-rates, bounce-rates, visits.',
+        },
+        {
+          text: 'Mobile-friendly interface',
+        },
+        {
+          text: 'Customizable share link',
+          footnote: 'Customize your links with your business usernames',
+          negative: true,
+        },
+        {
+          text: 'Add more colors to your forms',
+          footnote: 'Choose more colors while building your forms',
+          negative: true,
+        },
+        {
+          text: 'Brand colors',
+          footnote: 'Customize your forms with your brand colors',
+          negative: true,
+        },
+        {
+          text: 'Priority support',
+          negative: true,
+        },
+      ],
+    },
+    {
+      plan: 'Premium',
+      tagline:
+        'For businesses and content creators with real-time analytics needs.',
+      quota: PLANS.find((p) => p.slug === 'premium')!.quota,
+      features: [
+        {
+          text: 'Unlimited forms per month',
+          footnote: 'The maximum amount of forms per month',
+        },
+        {
+          text: 'Rich analytics for all surveys',
+          footnote:
+            'Access to feature-rich analytics like submit-rates, bounce-rates, visits, buttons-clicked, and more.',
+        },
+        {
+          text: 'Mobile-friendly interface',
+        },
+        {
+          text: 'Customizable share link',
+          footnote: 'Customize your links with your business usernames',
+          negative: false,
+        },
+        {
+          text: 'Add more colors to your forms',
+          footnote: 'Choose more colors while building your forms',
+          negative: false,
+        },
+        {
+          text: 'Brand colors',
+          footnote: 'Customize your forms with your brand colors',
+          negative: false,
+        },
+        {
+          text: 'Priority support',
+          negative: false,
+        },
+      ],
+    },
+  ];
+
   return (
     <div className='flex flex-col min-h-screen min-w-full bg-background max-h-screen'>
       <Navbar />
@@ -211,18 +304,16 @@ const Home = () => {
         </div>
 
         {/* Submit Form */}
-        <div className='mx-auto mb-32 mt-12 max-w-7xl min-h-[80vh]'>
+        <div className='mx-auto mb-24 mt-12 max-w-7xl min-h-[80vh]'>
           <div className='flex gap-8 sm:mt-24'>
             <div className='flex flex-col gap-12'>
-              <h1 className='font-bold text-2xl'>
-                Branded photos and banners
-              </h1>
+              <h1 className='font-bold text-2xl'>Branded photos and banners</h1>
               <p className='leading-normal tracking-wide text-lg'>
                 Personalize your survey forms with your brand banners and
                 photos.
               </p>
             </div>
-            <div className='w-[150vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+            <div className='w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
               <Image
                 src='/form-submit.png'
                 alt='Analytics preview'
@@ -236,6 +327,144 @@ const Home = () => {
         </div>
 
         {/* Pricing */}
+        <MaxWidthWrapper className='mb-12 px-0 mt-6 text-center max-w-7xl'>
+          <div className='mx-auto max-w-4xl sm:text-center'>
+            <h1 className='mt-2 font-bold text-4xl sm:text-5xl'>
+              Transparent and flexible pricing
+            </h1>
+            <p className='mt-4 text-lg'>
+              Build your surveys with our cheap and affordable pricing. Publish
+              and share for free.
+            </p>
+          </div>
+
+          <div className='pt-12 pb-12 grid grid-cols-1 gap-10 lg:grid-cols-2'>
+            <TooltipProvider>
+              {pricingItems.map(({ plan, tagline, quota, features }) => {
+                const price =
+                  PLANS.find((p) => p.slug === plan.toLowerCase())?.price
+                    .amount || 0;
+
+                return (
+                  <div
+                    key={plan}
+                    className={cn('relative rounded-2xl shadow-lg', {
+                      'border-2 border-[#4caf50] shadow-[#4caf50]-200':
+                        plan === 'Premium',
+                      'border border-gray-200': plan !== 'Premium',
+                    })}
+                  >
+                    {plan === 'Premium' && (
+                      <div className='absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-gradient-to-r from-[#4caf50] to-cyan-600 px-3 py-2 text-sm font-medium text-white'>
+                        Upgrade now
+                      </div>
+                    )}
+
+                    <div className='p-5'>
+                      <h3 className='my-3 text-center font-display text-3xl font-bold'>
+                        {plan}
+                      </h3>
+                      <p className='text-lg'>{tagline}</p>
+                      <p className='my-5 font-display text-6xl font-semibold'>
+                        ${price}
+                      </p>
+                      <p className='text-lg'>per month</p>
+                    </div>
+
+                    <div className='flex h-20 items-center justify-center border-b border-t border-gray-200'>
+                      <div className='flex items-center space-x-1'>
+                        <p>{quota.toLocaleString()} PDFs/mo included</p>
+
+                        <Tooltip delayDuration={300}>
+                          <TooltipTrigger className='cursor-default ml-1.5'>
+                            <MdHelpCenter className='h-4 w-4 text-[#4caf50]' />
+                          </TooltipTrigger>
+                          <TooltipContent className='w-80 p-2'>
+                            How many PDFs you can upload per month.
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </div>
+
+                    <ul className='my-10 space-y-5 px-8'>
+                      {features.map(({ text, footnote, negative }) => (
+                        <li key={text} className='flex space-x-5'>
+                          <div className='flex-shrink-0'>
+                            {negative ? (
+                              <BiMinus className='h-6 w-6 text-[#4caf50]-300' />
+                            ) : (
+                              <MdCheck className='h-6 w-6 text-[#4caf50]-500' />
+                            )}
+                          </div>
+                          {footnote ? (
+                            <div className='flex items-center space-x-1'>
+                              <p
+                                className={cn('text-[#4caf50]-600', {
+                                  'text-[#4caf50]-400': negative,
+                                })}
+                              >
+                                {text}
+                              </p>
+                              <Tooltip delayDuration={300}>
+                                <TooltipTrigger className='cursor-default ml-1.5'>
+                                  <MdHelpCenter className='h-4 w-4 text-[#4caf50]-500' />
+                                </TooltipTrigger>
+                                <TooltipContent className='w-80 p-2'>
+                                  {footnote}
+                                </TooltipContent>
+                              </Tooltip>
+                            </div>
+                          ) : (
+                            <p
+                              className={cn('text-[#4caf50]-600', {
+                                'text-[#4caf50]-400': negative,
+                              })}
+                            >
+                              {text}
+                            </p>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className='border-t border-gray-200' />
+                    <div className='p-5'>
+                      {plan === 'Free' ? (
+                        <Link
+                          href={user ? '/dashboard' : '/sign-in'}
+                          className={buttonVariants({
+                            className: 'w-full',
+                            variant: 'secondary',
+                          })}
+                        >
+                          {user ? 'Upgrade now' : 'Sign up'}
+                          <MdArrowForward className='h-5 w-5 ml-1.5' />
+                        </Link>
+                      ) : user ? (
+                        <Button
+                          variant={'default'}
+                          className='gap-2 bg-[#4caf50] hover:bg-[#4caf50] hover:opacity-80'
+                        >
+                          Get started{' '}
+                          <MdArrowForward className='ml-1.5 h-5 w-5' />
+                        </Button>
+                      ) : (
+                        <Link href='/sign-in'>
+                          <Button
+                            variant={'default'}
+                            className='w-full gap-2 bg-[#4caf50] hover:bg-[#4caf50] hover:opacity-80'
+                          >
+                            {user ? 'Upgrade now' : 'Sign up'}
+                            <MdArrowForward className='ml-1.5 h-5 w-5' />
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </TooltipProvider>
+          </div>
+        </MaxWidthWrapper>
       </>
     </div>
   );
