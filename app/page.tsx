@@ -12,6 +12,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { PLANS } from '@/lib/stripe';
 import { cn } from '@/lib/utils';
 import { BiMinus } from 'react-icons/bi';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Home = () => {
   const [user, setUser] = useState<any>();
@@ -465,6 +466,103 @@ const Home = () => {
             </TooltipProvider>
           </div>
         </MaxWidthWrapper>
+
+        {/* Testimonial */}
+        {/* <div className='flex flex-col gap-3 justify-start items-start bg-black mb-12 !px-0 mt-6 h-fit'>
+          <div className='flex flex-col gap-3 mx-auto mb-16 w-full max-w-7xl'>
+            <h1 className='mt-[7rem] uppercase font-bold text-sm sm:text-sm text-[#4caf50]'>
+              Customers
+            </h1>
+            <div className='flex flex-col gap-2'>
+              <p className='mt-4 text-white text-5xl font-semibold'>
+                Join thousands of teams
+              </p>
+              <p className='mt-4 text-white text-5xl font-semibold'>
+                who already use FormPilot
+              </p>
+            </div>
+          </div>
+          <div className='grid grid-cols-3 gap-5 mx-auto mt-10 w-full max-w-7xl'>
+            <div className='flex flex-col gap-2'>
+              <p className='text-[21px] font-medium mb-4'>
+                "FormPilot has revolutionized the way we collect and manage
+                data. The intuitive interface and real-time collaboration
+                features have streamlined our processes, saving us time and
+                boosting overall efficiency. It&apos;s become an indispensable
+                tool in our tech stack."
+              </p>
+              <div className='flex justify-start items-center gap-3 w-full'>
+                <div className='flex flex-row justify-center items-start gap-5 w-full h-[90px]'>
+                  <Avatar className='flex flex-col justify-center items-start h-fit w-[50px]'>
+                    <AvatarImage
+                      src='https://www.aipromptsgalaxy.com/wp-content/uploads/2023/06/subrat_female_avatar_proud_face_Aurora_a_25-year-old_girl_with__fd0e4c59-bb7e-4636-9258-6690ec6a71e7.png'
+                      alt='@shadcn'
+                    />
+                    <AvatarFallback>SJ</AvatarFallback>
+                  </Avatar>
+                  <div className='flex flex-col justify-center items-start gap-3 w-full'>
+                    <p className='text-sm font-semibold'>Sarah Johnson</p>
+                    <p className='text-sm text-gray-400 font-medium'>
+                      Founder, TechHub Innovations
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <p className='text-[21px] font-medium mb-4'>
+                "FormPilot&apos;s flexibility and TypeScript integration give us
+                the control we need over our forms. The customization options
+                and seamless integration with our workflows have significantly
+                improved our development speed. It&apos;s a game-changer for any
+                development team."
+              </p>
+              <div className='flex justify-start items-center gap-3 w-full'>
+                <div className='flex flex-row justify-center items-start gap-5 w-full h-[90px]'>
+                  <Avatar className='flex flex-col justify-center items-start h-fit w-[50px]'>
+                    <AvatarImage
+                      src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/de7105dc-f901-4658-a798-d2154a9c1669/dfy0ik1-ea85612f-627a-4064-a60c-d2af38805744.png/v1/fill/w_1280,h_1280,q_80,strp/male_avatar_issue___spa_01_by_corvinusblack_dfy0ik1-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4MCIsInBhdGgiOiJcL2ZcL2RlNzEwNWRjLWY5MDEtNDY1OC1hNzk4LWQyMTU0YTljMTY2OVwvZGZ5MGlrMS1lYTg1NjEyZi02MjdhLTQwNjQtYTYwYy1kMmFmMzg4MDU3NDQucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Ba8AbXcUyD8KdLUvI5B5AXLvC1COA4KotH2qlghMZLE'
+                      alt='@shadcn'
+                    />
+                    <AvatarFallback>DR</AvatarFallback>
+                  </Avatar>
+                  <div className='flex flex-col justify-center items-start gap-3 w-full'>
+                    <p className='text-sm font-semibold'>David Rodriguez</p>
+                    <p className='text-sm text-gray-400 font-medium'>
+                      Lead Developer, ByteCraft Solutions
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='flex flex-col gap-2'>
+              <p className='text-[21px] font-medium mb-4'>
+                "FormPilot not only enhances the user experience but also
+                elevates the aesthetics of our forms. The color scheme options
+                and interactive elements make our forms engaging, leaving a
+                lasting impression on our clients. It&apos;s a perfect blend of
+                functionality and design."
+              </p>
+              <div className='flex justify-start items-center gap-3 w-full'>
+                <div className='flex flex-row justify-center items-start gap-5 w-full h-[90px]'>
+                  <Avatar className='flex flex-col justify-center items-start h-fit w-[50px]'>
+                    <AvatarImage
+                      src='https://letstryai.com/wp-content/uploads/2023/08/memoji-avatar-midjourney-prompt.jpg'
+                      alt='@shadcn'
+                    />
+                    <AvatarFallback>EC</AvatarFallback>
+                  </Avatar>
+                  <div className='flex flex-col justify-center items-start gap-3 w-full'>
+                    <p className='text-sm font-semibold'>Emily Chen</p>
+                    <p className='text-sm text-gray-400 font-medium'>
+                      Marketing Manager, DataDynamics Inc.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
       </>
     </div>
   );
