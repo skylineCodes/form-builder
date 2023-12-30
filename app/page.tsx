@@ -179,13 +179,13 @@ const Home = () => {
         </div>
 
         {/* Feature section */}
-        <div className='mx-auto mb-32 mt-32 max-w-6xl min-h-[70vh]'>
+        <div className='mx-auto mb-8 mt-8 max-w-6xl h-fit'>
           <div className='mb-12 px-6 lg:px-8'>
             <div className='mx-auto max-w-4xl sm:text-center'>
-              <h2 className='mt-2 font-bold text-4xl sm:text-5xl'>
+              <h2 className='mt-2 font-bold text-center text-3xl lg:text-4xl sm:text-5xl'>
                 Start building surveys in minutes
               </h2>
-              <p className='mt-4 text-lg'>
+              <p className='mt-4 text-lg text-center'>
                 Building business surveys has never been easier than with
                 FormPilot.
               </p>
@@ -193,9 +193,9 @@ const Home = () => {
           </div>
 
           {/* steps */}
-          <ol className='my-8 space-y-4 pt-4 md:flex md:space-x-12 md:space-y-0'>
+          <ol className='flex flex-col lg:flex-row my-8 space-y-4 mx-[10px] lg:mx-[0px] pt-4 md:flex md:space-x-12 md:space-y-0 h-fit'>
             <li className='md:flex-1'>
-              <div className='flex flex-col border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
+              <div className='flex flex-col justify-center items-center lg:items-start border-zinc-300 py-2 border-t-2 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
                 <span className='text-sm font-medium text-[#9089fc]'>
                   Step 1
                 </span>
@@ -210,7 +210,7 @@ const Home = () => {
               </div>
             </li>
             <li className='md:flex-1'>
-              <div className='flex flex-col border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
+              <div className='flex flex-col justify-center items-center lg:items-start border-zinc-300 py-2 border-t-2 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
                 <span className='text-sm font-medium text-[#9089fc]'>
                   Step 2
                 </span>
@@ -226,7 +226,7 @@ const Home = () => {
               </div>
             </li>
             <li className='md:flex-1'>
-              <div className='flex flex-col border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
+              <div className='flex flex-col justify-center items-center lg:items-start border-zinc-300 py-2 border-t-2 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4'>
                 <span className='text-sm font-medium text-[#9089fc]'>
                   Step 3
                 </span>
@@ -258,16 +258,18 @@ const Home = () => {
         </div>
 
         {/* Analytics */}
-        <div className='mx-auto mb-32 mt-12 max-w-7xl min-h-[80vh]'>
-          <div className='flex gap-8 sm:mt-24'>
-            <div className='flex flex-col gap-12'>
-              <h1 className='font-bold text-2xl'>Real-time data analytics</h1>
-              <p className='leading-normal tracking-wide text-lg'>
+        <div className='mx-auto mb-8 mt-8 max-w-7xl min-h-[80vh]'>
+          <div className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'>
+            <div className='flex flex-col gap-12 mx-[10px]'>
+              <h1 className='font-bold text-2xl text-center lg:text-left'>
+                Real-time data analytics
+              </h1>
+              <p className='leading-normal tracking-wide text-lg text-center lg:text-left'>
                 Find out how your customers are interacting with your surveys
                 with real-time data analytics with advanced analytics metrics.
               </p>
             </div>
-            <div className='w-[200vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+            <div className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
               <Image
                 src='/analytics.png'
                 alt='Analytics preview'
@@ -281,9 +283,9 @@ const Home = () => {
         </div>
 
         {/* Form Details */}
-        <div className='mx-auto mb-32 mt-12 max-w-7xl min-h-[80vh]'>
-          <div className='flex gap-8 sm:mt-24'>
-            <div className='w-[200vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+        <div className='mx-auto mb-8 mt-8 max-w-7xl min-h-[80vh]'>
+          <div className='flex flex-col sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'>
+            <div className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
               <Image
                 src='/dashboard-form.png'
                 alt='Analytics preview'
@@ -293,9 +295,11 @@ const Home = () => {
                 className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
               />
             </div>
-            <div className='flex flex-col gap-12'>
-              <h1 className='font-bold text-2xl'>Customized Sharable Link</h1>
-              <p className='leading-normal tracking-wide text-lg'>
+            <div className='flex flex-col gap-12 mx-[10px]'>
+              <h1 className='font-bold text-2xl text-center lg:text-left'>
+                Customized Sharable Link
+              </h1>
+              <p className='leading-normal tracking-wide text-lg text-center lg:text-left'>
                 Beautiful and customizable sharable link to your customers, with
                 full details on click-rates, bounce-rates, visits-rates on each
                 survey.
@@ -305,16 +309,18 @@ const Home = () => {
         </div>
 
         {/* Submit Form */}
-        <div className='mx-auto mb-24 mt-12 max-w-7xl min-h-[80vh]'>
-          <div className='flex gap-8 sm:mt-24'>
-            <div className='flex flex-col gap-12'>
-              <h1 className='font-bold text-2xl'>Branded photos and banners</h1>
-              <p className='leading-normal tracking-wide text-lg'>
+        <div className='mx-auto mb-8 mt-8 max-w-7xl min-h-[80vh]'>
+          <div className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'>
+            <div className='flex flex-col gap-12 mx-[10px]'>
+              <h1 className='font-bold text-2xl text-center lg:text-left'>
+                Branded photos and banners
+              </h1>
+              <p className='leading-normal tracking-wide text-lg text-center lg:text-left'>
                 Personalize your survey forms with your brand banners and
                 photos.
               </p>
             </div>
-            <div className='w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+            <div className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
               <Image
                 src='/form-submit.png'
                 alt='Analytics preview'
@@ -328,7 +334,7 @@ const Home = () => {
         </div>
 
         {/* Pricing */}
-        <MaxWidthWrapper className='mb-12 px-0 mt-6 text-center max-w-7xl'>
+        <MaxWidthWrapper className='mb-32 px-0 mt-6 text-center max-w-7xl h-fit'>
           <div className='mx-auto max-w-4xl sm:text-center'>
             <h1 className='mt-2 font-bold text-4xl sm:text-5xl'>
               Transparent and flexible pricing
@@ -468,23 +474,23 @@ const Home = () => {
         </MaxWidthWrapper>
 
         {/* Testimonial */}
-        {/* <div className='flex flex-col gap-3 justify-start items-start bg-black mb-12 !px-0 mt-6 h-fit'>
-          <div className='flex flex-col gap-3 mx-auto mb-16 w-full max-w-7xl'>
+        <div className='flex flex-col gap-3 justify-center items-center bg-black mb-12 h-fit'>
+          <div className='flex flex-col gap-3 mx-[10px] mb-16 w-full max-w-xs lg:max-w-7xl'>
             <h1 className='mt-[7rem] uppercase font-bold text-sm sm:text-sm text-[#4caf50]'>
               Customers
             </h1>
             <div className='flex flex-col gap-2'>
-              <p className='mt-4 text-white text-5xl font-semibold'>
+              <p className='mt-4 text-white text-2xl lg:text-5xl font-semibold'>
                 Join thousands of teams
               </p>
-              <p className='mt-4 text-white text-5xl font-semibold'>
+              <p className='mt-2 text-white text-2xl lg:text-5xl font-semibold'>
                 who already use FormPilot
               </p>
             </div>
           </div>
-          <div className='grid grid-cols-3 gap-5 mx-auto mt-10 w-full max-w-7xl'>
+          <div className='flex flex-col justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'>
             <div className='flex flex-col gap-2'>
-              <p className='text-[21px] font-medium mb-4'>
+              <p className='text-[21px] font-medium mb-4 text-center lg:text-left'>
                 "FormPilot has revolutionized the way we collect and manage
                 data. The intuitive interface and real-time collaboration
                 features have streamlined our processes, saving us time and
@@ -510,7 +516,7 @@ const Home = () => {
               </div>
             </div>
             <div className='flex flex-col gap-2'>
-              <p className='text-[21px] font-medium mb-4'>
+              <p className='text-[21px] font-medium mb-4 text-center lg:text-left'>
                 "FormPilot&apos;s flexibility and TypeScript integration give us
                 the control we need over our forms. The customization options
                 and seamless integration with our workflows have significantly
@@ -536,7 +542,7 @@ const Home = () => {
               </div>
             </div>
             <div className='flex flex-col gap-2'>
-              <p className='text-[21px] font-medium mb-4'>
+              <p className='text-[21px] font-medium mb-4 text-center lg:text-left'>
                 "FormPilot not only enhances the user experience but also
                 elevates the aesthetics of our forms. The color scheme options
                 and interactive elements make our forms engaging, leaving a
@@ -562,7 +568,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </>
     </div>
   );
