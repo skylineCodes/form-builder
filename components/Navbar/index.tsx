@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import LOGO from '@/components/assets/svgs/formpilot_small.svg';
 import { Button, buttonVariants } from '../ui/button';
 import { MdArrowForward } from 'react-icons/md';
 import ThemeSwitcher from '../ThemeSwitcher';
+import MobileNav from '../MobileNav';
 
 const Navbar = () => {
+  const [user, setUser] = useState<any>();
+
   return (
     <nav className='sticky h-14 inset-x-0 top-0 z-30 w-full backdrop-blur-lg transition-all'>
       <MaxWidthWrapper>
@@ -14,6 +17,8 @@ const Navbar = () => {
           <Link href='/' className='flex z-40 font-semibold'>
             <LOGO />
           </Link>
+
+          <MobileNav isAuth={!!user} />
 
           <div className='hidden items-center space-x-4 sm:flex'>
             <Link

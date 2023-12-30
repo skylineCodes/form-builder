@@ -12,10 +12,13 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { PLANS } from '@/lib/stripe';
 import { cn } from '@/lib/utils';
 import { BiMinus } from 'react-icons/bi';
+import LOGO from '@/components/assets/svgs/formpilot_small.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs';
 
 const Home = () => {
   const [user, setUser] = useState<any>();
+  const [date, setDate] = useState<any>(new Date());
 
   // Number of forms per months
   // Detailed analytics on each forms
@@ -567,6 +570,82 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className=''>
+          <div className='flex flex-col lg:grid lg:grid-cols-[400px_1fr_1fr_1fr_1fr] gap-4 py-[49px] m-auto max-w-xs lg:max-w-7xl'>
+            <div className='flex flex-col justify-start items-start gap-3'>
+              <Link href='/' className='flex z-40 font-semibold'>
+                <LOGO />
+              </Link>
+              <p className='text-base'>
+                FormPilot is more than a tool; it&apos;s a solution crafted to
+                empower businesses and individuals alike. Whether you&apos;re
+                streamlining internal processes, collecting customer feedback,
+                or conducting surveys, FormPilot is your partner in shaping
+                meaningful data experiences.
+              </p>
+            </div>
+            <div className='flex flex-col justify-start items-start gap-3'>
+              <h2 className='text-base lg:pl-10 pt-6 md:pt-6 font-semibold'>
+                Quick Links
+              </h2>
+              <div className='flex flex-col lg:pl-8 pt-6 gap-3'>
+                <Link href={'/'}>
+                  <p className='text-base'>Features</p>
+                </Link>
+                <Link href={'/'}>
+                  <p className='text-base'>How It Works</p>
+                </Link>
+                <Link href={'/'}>
+                  <p className='text-base'>Pricing</p>
+                </Link>
+              </div>
+            </div>
+            <div className='flex flex-col justify-start items-start gap-3'>
+              <h2 className='text-base lg:pl-10 pt-6 md:pt-6 font-semibold'>
+                Other Links
+              </h2>
+              <div className='flex flex-col lg:pl-8 pt-6 gap-3'>
+                <Link href={'/'}>
+                  <p className='text-base'>Privacy</p>
+                </Link>
+                <Link href={'/'}>
+                  <p className='text-base'>Terms & Conditions</p>
+                </Link>
+                <Link href={'/'}>
+                  <p className='text-base'>Disclaimer</p>
+                </Link>
+                <Link href={'/'}>
+                  <p className='text-base'>FAQs</p>
+                </Link>
+              </div>
+            </div>
+            <div className='flex flex-col justify-start items-start gap-3'>
+              <h2 className='text-base lg:pl-10 pt-6 md:pt-6 font-semibold'>
+                Contacts
+              </h2>
+              <div className='flex flex-col lg:pl-8 pt-6 gap-3'>
+                <Link href={'/'}>
+                  <p className='text-base'>+2349131297648</p>
+                </Link>
+                <Link href={'/'}>
+                  <p className='text-base'>hello@formpilot.xyz</p>
+                </Link>
+              </div>
+            </div>
+            <div className='flex flex-col justify-start items-start gap-3'>
+              <div className='flex justify-center items-center gap-3 lg:pl-10 pt-6 md:pt-6 font-semibold'>
+                <BsTwitter className='h-6 w-6 text-[#4caf50]-300' />
+                <BsFacebook className='h-6 w-6 text-[#4caf50]-300' />
+                <BsLinkedin className='h-6 w-6 text-[#4caf50]-300' />
+              </div>
+            </div>
+          </div>
+          <div className='flex justify-center items-center'>
+            <p className='text-base pb-4'>Copyright© FormPilot {date?.getFullYear()}</p>
           </div>
         </div>
       </>
