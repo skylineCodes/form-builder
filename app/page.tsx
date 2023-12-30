@@ -510,7 +510,9 @@ const Home = () => {
                     <AvatarFallback>SJ</AvatarFallback>
                   </Avatar>
                   <div className='flex flex-col justify-center items-start gap-3 w-full'>
-                    <p className='text-sm font-semibold'>Sarah Johnson</p>
+                    <p className='text-sm font-semibold text-white'>
+                      Sarah Johnson
+                    </p>
                     <p className='text-sm text-gray-400 font-medium'>
                       Founder, TechHub Innovations
                     </p>
@@ -536,7 +538,9 @@ const Home = () => {
                     <AvatarFallback>DR</AvatarFallback>
                   </Avatar>
                   <div className='flex flex-col justify-center items-start gap-3 w-full'>
-                    <p className='text-sm font-semibold'>David Rodriguez</p>
+                    <p className='text-sm font-semibold text-white'>
+                      David Rodriguez
+                    </p>
                     <p className='text-sm text-gray-400 font-medium'>
                       Lead Developer, ByteCraft Solutions
                     </p>
@@ -562,7 +566,9 @@ const Home = () => {
                     <AvatarFallback>EC</AvatarFallback>
                   </Avatar>
                   <div className='flex flex-col justify-center items-start gap-3 w-full'>
-                    <p className='text-sm font-semibold'>Emily Chen</p>
+                    <p className='text-sm font-semibold text-white'>
+                      Emily Chen
+                    </p>
                     <p className='text-sm text-gray-400 font-medium'>
                       Marketing Manager, DataDynamics Inc.
                     </p>
