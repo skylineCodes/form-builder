@@ -493,7 +493,7 @@ const Home = () => {
           </div>
           <div className='flex flex-col justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'>
             <div className='flex flex-col gap-2'>
-              <p className='text-[21px] font-medium mb-4 text-center lg:text-left'>
+              <p className='text-[21px] text-white font-medium mb-4 text-center lg:text-left'>
                 "FormPilot has revolutionized the way we collect and manage
                 data. The intuitive interface and real-time collaboration
                 features have streamlined our processes, saving us time and
@@ -519,7 +519,7 @@ const Home = () => {
               </div>
             </div>
             <div className='flex flex-col gap-2'>
-              <p className='text-[21px] font-medium mb-4 text-center lg:text-left'>
+              <p className='text-[21px] text-white font-medium mb-4 text-center lg:text-left'>
                 "FormPilot&apos;s flexibility and TypeScript integration give us
                 the control we need over our forms. The customization options
                 and seamless integration with our workflows have significantly
@@ -545,7 +545,7 @@ const Home = () => {
               </div>
             </div>
             <div className='flex flex-col gap-2'>
-              <p className='text-[21px] font-medium mb-4 text-center lg:text-left'>
+              <p className='text-[21px] text-white font-medium mb-4 text-center lg:text-left'>
                 "FormPilot not only enhances the user experience but also
                 elevates the aesthetics of our forms. The color scheme options
                 and interactive elements make our forms engaging, leaving a
@@ -645,7 +645,9 @@ const Home = () => {
             </div>
           </div>
           <div className='flex justify-center items-center'>
-            <p className='text-base pb-4'>Copyright© FormPilot {date?.getFullYear()}</p>
+            <p className='text-base pb-4'>
+              Copyright© FormPilot {date?.getFullYear()}
+            </p>
           </div>
         </div>
       </>
