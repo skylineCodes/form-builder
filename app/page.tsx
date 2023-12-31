@@ -577,7 +577,7 @@ const Home = () => {
         </div>
 
         {/* Pricing */}
-        <MaxWidthWrapper className='mb-32 px-0 mt-6 text-center h-fit max-w-[90vw] lg:max-w-7xl m-auto'>
+        <MaxWidthWrapper className='mb-32 px-0 mt-32 lg:mt-24 text-center h-fit max-w-[90vw] lg:max-w-7xl mx-auto'>
           <div className='mx-auto max-w-4xl sm:text-center'>
             <h1 className='mt-2 font-bold text-4xl sm:text-5xl'>
               Transparent and flexible pricing
