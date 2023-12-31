@@ -135,7 +135,7 @@ const Home = () => {
 
   const analyticsLeftVariants = {
     initial: {
-      x: -500,
+      x: -10,
       opacity: 0,
     },
     animate: {
@@ -158,7 +158,7 @@ const Home = () => {
 
   const analyticsRightVariants = {
     initial: {
-      x: 500,
+      x: 10,
       opacity: 0,
     },
     animate: {
@@ -462,7 +462,7 @@ const Home = () => {
         </div>
 
         {/* Analytics */}
-        <div className='mx-auto mb-8 mt-8 max-w-7xl'>
+        <div className='max-w-[90vw] lg:max-w-7xl m-auto mb-8 mt-8'>
           <div
             ref={analyticRef}
             className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'
@@ -500,7 +500,7 @@ const Home = () => {
         </div>
 
         {/* Form Details */}
-        <div className='mx-auto mb-8 mt-8 max-w-7xl'>
+        <div className='max-w-[90vw] lg:max-w-7xl m-auto mb-8 mt-8'>
           <div
             ref={formRef}
             className='flex flex-col sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'
@@ -539,7 +539,7 @@ const Home = () => {
         </div>
 
         {/* Banner Media */}
-        <div className='mx-auto mb-8 mt-8 max-w-7xl'>
+        <div className='max-w-[90vw] lg:max-w-7xl m-auto mb-8 mt-8'>
           <div
             ref={bannerRef}
             className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'
@@ -577,7 +577,7 @@ const Home = () => {
         </div>
 
         {/* Pricing */}
-        <MaxWidthWrapper className='mb-32 px-0 mt-6 text-center max-w-7xl h-fit'>
+        <MaxWidthWrapper className='mb-32 px-0 mt-6 text-center h-fit max-w-[90vw] lg:max-w-7xl m-auto'>
           <div className='mx-auto max-w-4xl sm:text-center'>
             <h1 className='mt-2 font-bold text-4xl sm:text-5xl'>
               Transparent and flexible pricing
@@ -623,14 +623,14 @@ const Home = () => {
 
                     <div className='flex h-20 items-center justify-center border-b border-t border-gray-200'>
                       <div className='flex items-center space-x-1'>
-                        <p>{quota.toLocaleString()} PDFs/mo included</p>
+                        <p>{quota.toLocaleString()} Forms/mo included</p>
 
                         <Tooltip delayDuration={300}>
                           <TooltipTrigger className='cursor-default ml-1.5'>
                             <MdHelpCenter className='h-4 w-4 text-[#4caf50]' />
                           </TooltipTrigger>
                           <TooltipContent className='w-80 p-2'>
-                            How many PDFs you can upload per month.
+                            How many Forms you can upload per month.
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -638,7 +638,10 @@ const Home = () => {
 
                     <ul className='my-10 space-y-5 px-8'>
                       {features.map(({ text, footnote, negative }) => (
-                        <li key={text} className='flex space-x-5'>
+                        <li
+                          key={text}
+                          className='flex items-start justify-start space-x-5'
+                        >
                           <div className='flex-shrink-0'>
                             {negative ? (
                               <BiMinus className='h-6 w-6 text-[#4caf50]-300' />
@@ -647,9 +650,9 @@ const Home = () => {
                             )}
                           </div>
                           {footnote ? (
-                            <div className='flex items-center space-x-1'>
+                            <div className='flex items-start justify-start space-x-1'>
                               <p
-                                className={cn('text-[#4caf50]-600', {
+                                className={cn('text-[#4caf50]-600 text-left', {
                                   'text-[#4caf50]-400': negative,
                                 })}
                               >
@@ -718,22 +721,22 @@ const Home = () => {
 
         {/* Testimonial */}
         <div className='flex flex-col gap-3 justify-center items-center bg-black mb-12 h-fit'>
-          <div className='flex flex-col gap-3 mx-[10px] mb-16 w-full max-w-xs lg:max-w-7xl'>
-            <h1 className='mt-[7rem] uppercase font-bold text-sm sm:text-sm text-[#4caf50]'>
+          <div className='flex flex-col justify-start items-start gap-3 mx-[10px] mb-16 w-full max-w-[90vw] lg:max-w-[90vw]'>
+            <h1 className='mt-[7rem] uppercase font-bold text-md sm:text-sm text-[#4caf50]'>
               Customers
             </h1>
             <div className='flex flex-col gap-2'>
-              <p className='mt-4 text-white text-2xl lg:text-5xl font-semibold'>
+              <p className='mt-4 text-white text-3xl lg:text-5xl font-semibold'>
                 Join thousands of teams
               </p>
-              <p className='mt-2 text-white text-2xl lg:text-5xl font-semibold'>
+              <p className='mt-2 text-white text-3xl lg:text-5xl font-semibold'>
                 who already use FormPilot
               </p>
             </div>
           </div>
           <div
             ref={testimonialRef}
-            className='flex flex-col m-h-[60vh] justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'
+            className='flex flex-col m-h-[60vh] justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] m-auto mt-10 max-w-[90vw] lg:max-w-[90vw]'
           >
             <motion.div
               variants={testimonialVariants}
@@ -838,8 +841,8 @@ const Home = () => {
         </div>
 
         {/* Footer */}
-        <div className=''>
-          <div className='flex flex-col lg:grid lg:grid-cols-[400px_1fr_1fr_1fr_1fr] gap-4 py-[49px] m-auto max-w-xs lg:max-w-7xl'>
+        <div className='max-w-[90vw] w-full lg:max-w-[90vw] m-auto'>
+          <div className='flex flex-col lg:grid lg:grid-cols-[400px_1fr_1fr_1fr_1fr] gap-4 py-[49px] lg:max-w-7xl'>
             <div className='flex flex-col justify-start items-start gap-3'>
               <Link href='/' className='flex z-40 font-semibold'>
                 <LOGO />
