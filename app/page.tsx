@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { MdArrowForward, MdCheck, MdHelpCenter } from 'react-icons/md';
 import Image from 'next/image';
-import ReactPlayer from 'react-player';
+import dynamic from 'next/dynamic';
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { PLANS } from '@/lib/stripe';
 import { cn } from '@/lib/utils';
@@ -15,17 +16,206 @@ import { BiMinus } from 'react-icons/bi';
 import LOGO from '@/components/assets/svgs/formpilot_small.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs';
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 const Home = () => {
   const [user, setUser] = useState<any>();
   const [date, setDate] = useState<any>(new Date());
 
-  // Number of forms per months
-  // Detailed analytics on each forms
-  // Customized url
-  // Add Brand color to forms
-  // Access to other color palettes
-  // Access to advanced elements
+  const heroRef = useRef(null);
+  const isInView = useInView(heroRef);
+
+  const formRef = useRef(null);
+  const isFormInView = useInView(formRef);
+
+  const analyticRef = useRef(null);
+  const isAnalyticInView = useInView(analyticRef);
+
+  const bannerRef = useRef(null);
+  const isBannerInView = useInView(bannerRef);
+
+  const testimonialRef = useRef(null);
+  const isTestimonialInView = useInView(testimonialRef);
+
+  const mainControls = useAnimation();
+  
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start('animate');
+    } else {
+      mainControls.start('initial');
+    }
+  }, [isInView]);
+
+  const analyticsControls = useAnimation();
+
+  useEffect(() => {
+    if (isAnalyticInView) {
+      analyticsControls.start('animate');
+    } else {
+      analyticsControls.start('initial');
+    }
+  }, [isAnalyticInView]);
+
+  const formControls = useAnimation();
+
+  useEffect(() => {
+    if (isFormInView) {
+      formControls.start('animate');
+    } else {
+      formControls.start('initial');
+    }
+  }, [isFormInView]);
+
+  const bannerControls = useAnimation();
+
+  useEffect(() => {
+    if (isBannerInView) {
+      bannerControls.start('animate');
+    } else {
+      bannerControls.start('initial');
+    }
+  }, [isBannerInView]);
+
+  const testimonialControls = useAnimation();
+
+  useEffect(() => {
+    if (isTestimonialInView) {
+      testimonialControls.start('animate');
+    } else {
+      testimonialControls.start('initial');
+    }
+  }, [isTestimonialInView]);
+
+  const heroTextVariants = {
+    initial: {
+      y: -500,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 0.25,
+      },
+    },
+    scrollButton: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+      },
+    },
+  };
+
+  const heroImageVariants = {
+    initial: {
+      y: 50,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 0.25,
+      },
+    },
+    scrollButton: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+      },
+    },
+  };
+
+  const analyticsLeftVariants = {
+    initial: {
+      x: -500,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 0.25,
+      },
+    },
+    scrollButton: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+      },
+    },
+  };
+
+  const analyticsRightVariants = {
+    initial: {
+      x: 500,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: 0.25,
+      },
+    },
+    scrollButton: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+      },
+    },
+  };
+  
+  const testimonialVariants = {
+    initial: {
+      opacity: 0,
+      scale: 0.5,
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      },
+    },
+    scrollButton: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+      },
+    },
+  };
+
+  const sliderVariants = {
+    initial: {
+      x: 0,
+    },
+    animate: {
+      x: '-220%',
+      transition: {
+        repeat: Infinity,
+        repeatType: 'mirror',
+        duration: 20,
+      },
+    },
+  };
 
   const pricingItems = [
     {
@@ -111,30 +301,37 @@ const Home = () => {
     <div className='flex flex-col min-h-screen min-w-full bg-background max-h-screen'>
       <Navbar />
       <>
-        <MaxWidthWrapper className='mb-12 mt-24 sm:mt-40 flex flex-col items-center justify-center gap-6 text-center'>
-          <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
-            Build. Share. Analyze. <span className='text-[#4caf50]'>Forms</span>{' '}
-            in real-time.
-          </h1>
-          <p className='mt-5 max-w-prose text-zinc-700 dark:text-white sm:text-lg'>
-            FormPilot allows you to build and share business surveys among your
-            customers and get instant data-driven impressions.
-          </p>
+        <MaxWidthWrapper heroRef={heroRef} className='mb-12 mt-24 sm:mt-40'>
+          <motion.div
+            className='flex flex-col items-center justify-center gap-6 text-center'
+            variants={heroTextVariants}
+            initial='initial'
+            animate={mainControls}
+          >
+            <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
+              Build. Share. Analyze.{' '}
+              <span className='text-[#4caf50]'>Forms</span> in real-time.
+            </h1>
+            <p className='mt-5 max-w-prose text-zinc-700 dark:text-white sm:text-lg'>
+              FormPilot allows you to build and share business surveys among
+              your customers and get instant data-driven impressions.
+            </p>
 
-          <Link href='/sign-up'>
-            <Button
-              variant={'default'}
-              size='lg'
-              className='gap-2 bg-[#4caf50] hover:bg-[#4caf50] hover:opacity-80'
-            >
-              Get started <MdArrowForward className='ml-1.5 h-5 w-5' />
-            </Button>
-          </Link>
+            <Link href='/sign-up'>
+              <Button
+                variant={'default'}
+                size='lg'
+                className='gap-2 bg-[#4caf50] hover:bg-[#4caf50] hover:opacity-80'
+              >
+                Get started <MdArrowForward className='ml-1.5 h-5 w-5' />
+              </Button>
+            </Link>
+          </motion.div>
         </MaxWidthWrapper>
 
         {/* value proposition section */}
         <div className='mb-12'>
-          <div className='relative isolate'>
+          <div ref={heroRef} className='relative isolate'>
             <div
               aria-hidden='true'
               className='pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -145,10 +342,14 @@ const Home = () => {
                     'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
                 }}
                 className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#4caf50] to-[#0077CC] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
-              />
+              ></div>
             </div>
 
-            <div>
+            <motion.div
+              variants={heroImageVariants}
+              initial='initial'
+              animate={mainControls}
+            >
               <div className='mx-auto max-w-6xl px-6 lg:px-8'>
                 <div className='mt-16 mb-12 flow-root sm:mt-24'>
                   <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
@@ -164,7 +365,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             <div
               aria-hidden='true'
@@ -261,9 +462,17 @@ const Home = () => {
         </div>
 
         {/* Analytics */}
-        <div className='mx-auto mb-8 mt-8 max-w-7xl min-h-[80vh]'>
-          <div className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'>
-            <div className='flex flex-col gap-12 mx-[10px]'>
+        <div className='mx-auto mb-8 mt-8 max-w-7xl'>
+          <div
+            ref={analyticRef}
+            className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24 min-h-[80vh]'
+          >
+            <motion.div
+              variants={analyticsLeftVariants}
+              initial='initial'
+              animate={analyticsControls}
+              className='flex flex-col gap-12 mx-[10px]'
+            >
               <h1 className='font-bold text-2xl text-center lg:text-left'>
                 Real-time data analytics
               </h1>
@@ -271,8 +480,13 @@ const Home = () => {
                 Find out how your customers are interacting with your surveys
                 with real-time data analytics with advanced analytics metrics.
               </p>
-            </div>
-            <div className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+            </motion.div>
+            <motion.div
+              variants={analyticsRightVariants}
+              initial='initial'
+              animate={analyticsControls}
+              className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'
+            >
               <Image
                 src='/analytics.png'
                 alt='Analytics preview'
@@ -281,14 +495,22 @@ const Home = () => {
                 quality={100}
                 className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
               />
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Form Details */}
-        <div className='mx-auto mb-8 mt-8 max-w-7xl min-h-[80vh]'>
-          <div className='flex flex-col sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'>
-            <div className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+        <div className='mx-auto mb-8 mt-8 max-w-7xl'>
+          <div
+            ref={formRef}
+            className='flex flex-col sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24 min-h-[60vh]'
+          >
+            <motion.div
+              variants={analyticsLeftVariants}
+              initial='initial'
+              animate={formControls}
+              className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'
+            >
               <Image
                 src='/dashboard-form.png'
                 alt='Analytics preview'
@@ -297,8 +519,13 @@ const Home = () => {
                 quality={100}
                 className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
               />
-            </div>
-            <div className='flex flex-col gap-12 mx-[10px]'>
+            </motion.div>
+            <motion.div
+              variants={analyticsRightVariants}
+              initial='initial'
+              animate={formControls}
+              className='flex flex-col gap-12 mx-[10px]'
+            >
               <h1 className='font-bold text-2xl text-center lg:text-left'>
                 Customized Sharable Link
               </h1>
@@ -307,14 +534,22 @@ const Home = () => {
                 full details on click-rates, bounce-rates, visits-rates on each
                 survey.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Submit Form */}
-        <div className='mx-auto mb-8 mt-8 max-w-7xl min-h-[80vh]'>
-          <div className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'>
-            <div className='flex flex-col gap-12 mx-[10px]'>
+        {/* Banner Media */}
+        <div className='mx-auto mb-8 mt-8 max-w-7xl'>
+          <div
+            ref={bannerRef}
+            className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24 min-h-[80vh]'
+          >
+            <motion.div
+              variants={analyticsLeftVariants}
+              initial='initial'
+              animate={bannerControls}
+              className='flex flex-col gap-12 mx-[10px]'
+            >
               <h1 className='font-bold text-2xl text-center lg:text-left'>
                 Branded photos and banners
               </h1>
@@ -322,8 +557,13 @@ const Home = () => {
                 Personalize your survey forms with your brand banners and
                 photos.
               </p>
-            </div>
-            <div className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'>
+            </motion.div>
+            <motion.div
+              variants={analyticsRightVariants}
+              initial='initial'
+              animate={bannerControls}
+              className='w-[90vw] sm:w-[70vw] lg:w-[100vw] rounded-xl dark:shadow-md dark:shadow-green-600 lg:rounded-2xl'
+            >
               <Image
                 src='/form-submit.png'
                 alt='Analytics preview'
@@ -332,7 +572,7 @@ const Home = () => {
                 quality={100}
                 className='rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10'
               />
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -491,8 +731,16 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className='flex flex-col justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'>
-            <div className='flex flex-col gap-2'>
+          <div
+            ref={testimonialRef}
+            className='flex flex-col h-[60vh] justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'
+          >
+            <motion.div
+              variants={testimonialVariants}
+              initial={'initial'}
+              animate={testimonialControls}
+              className='flex flex-col gap-2'
+            >
               <p className='text-[21px] text-white font-medium mb-4 text-center lg:text-left'>
                 "FormPilot has revolutionized the way we collect and manage
                 data. The intuitive interface and real-time collaboration
@@ -519,8 +767,13 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className='flex flex-col gap-2'>
+            </motion.div>
+            <motion.div
+              variants={testimonialVariants}
+              initial={'initial'}
+              animate={testimonialControls}
+              className='flex flex-col gap-2'
+            >
               <p className='text-[21px] text-white font-medium mb-4 text-center lg:text-left'>
                 "FormPilot&apos;s flexibility and TypeScript integration give us
                 the control we need over our forms. The customization options
@@ -547,8 +800,13 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className='flex flex-col gap-2'>
+            </motion.div>
+            <motion.div
+              variants={testimonialVariants}
+              initial={'initial'}
+              animate={testimonialControls}
+              className='flex flex-col gap-2'
+            >
               <p className='text-[21px] text-white font-medium mb-4 text-center lg:text-left'>
                 "FormPilot not only enhances the user experience but also
                 elevates the aesthetics of our forms. The color scheme options
@@ -575,7 +833,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 

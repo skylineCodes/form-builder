@@ -6,6 +6,7 @@ import { Button, buttonVariants } from '../ui/button';
 import { MdArrowForward } from 'react-icons/md';
 import ThemeSwitcher from '../ThemeSwitcher';
 import MobileNav from '../MobileNav';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [user, setUser] = useState<any>();
@@ -13,7 +14,12 @@ const Navbar = () => {
   return (
     <nav className='sticky h-14 inset-x-0 top-0 z-30 w-full backdrop-blur-lg transition-all'>
       <MaxWidthWrapper>
-        <div className='flex h-14 items-center justify-between'>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className='flex h-14 items-center justify-between'
+        >
           <Link href='/' className='flex z-40 font-semibold'>
             <LOGO />
           </Link>
@@ -49,7 +55,7 @@ const Navbar = () => {
             </Link>
             <ThemeSwitcher />
           </div>
-        </div>
+        </motion.div>
       </MaxWidthWrapper>
     </nav>
   );

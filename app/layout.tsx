@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
-      <html lang='en'>
+    <html lang='en'>
+      <ClerkProvider>
         <body className={inter.className}>
           <NextTopLoader />
           <DesignerContextProvider>
@@ -36,7 +36,7 @@ export default function RootLayout({
             </ThemeProvider>
           </DesignerContextProvider>
         </body>
-      </html>
-    </ClerkProvider>
+      </ClerkProvider>
+    </html>
   );
 }
