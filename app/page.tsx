@@ -465,7 +465,7 @@ const Home = () => {
         <div className='mx-auto mb-8 mt-8 max-w-7xl'>
           <div
             ref={analyticRef}
-            className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24 min-h-[80vh]'
+            className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'
           >
             <motion.div
               variants={analyticsLeftVariants}
@@ -503,7 +503,7 @@ const Home = () => {
         <div className='mx-auto mb-8 mt-8 max-w-7xl'>
           <div
             ref={formRef}
-            className='flex flex-col sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24 min-h-[60vh]'
+            className='flex flex-col sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'
           >
             <motion.div
               variants={analyticsLeftVariants}
@@ -542,7 +542,7 @@ const Home = () => {
         <div className='mx-auto mb-8 mt-8 max-w-7xl'>
           <div
             ref={bannerRef}
-            className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24 min-h-[80vh]'
+            className='flex flex-col-reverse sm:flex-col-reverse items-center lg:flex-row gap-8 sm:mt-24'
           >
             <motion.div
               variants={analyticsLeftVariants}
@@ -733,7 +733,7 @@ const Home = () => {
           </div>
           <div
             ref={testimonialRef}
-            className='flex flex-col h-[60vh] justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'
+            className='flex flex-col m-h-[60vh] justify-center items-center lg:grid lg:grid-cols-3 gap-5 mx-[10px] mt-10 w-full max-w-xs lg:max-w-7xl'
           >
             <motion.div
               variants={testimonialVariants}
